@@ -4,6 +4,8 @@ const app = createApp({
         return {
             title: 'Daily to do list:',
             todoList: [],
+
+            newThingsToDo: '',
         };
     },
     methods: {
@@ -12,7 +14,25 @@ const app = createApp({
                 console.log(response.data);
                 this.todoList = response.data;
             });
+        },
+        addThings() {
+            const thing = this.newThingsToDo;
+            // console.log('nuova cosa da fare:' + this.newThingsToDo);
+            this.newThingsToDo = '';
+
+
+            const data = {
+                params: { thing },
+            };
+            const params = {
+                headers: { 'Content-Type': 'multipart/form-data' },
+            };
+
+            axios.post('http://localhost/php-todo-list-json/backend/api/save-thing.php', data, params).then((response) => {
+                console.log(response.data);
+            });
         }
+
     },
     mounted() {
         this.fetchTodoList();
