@@ -17,20 +17,22 @@ const app = createApp({
         },
         addThings() {
             const thing = this.newThingsToDo;
-            // console.log('nuova cosa da fare:' + this.newThingsToDo);
+            console.log('nuova cosa da fare:' + thing);
+
+
             this.newThingsToDo = '';
 
 
-            const data = {
-                params: { thing },
-            };
+            const data = { thing };
+
             const params = {
                 headers: { 'Content-Type': 'multipart/form-data' },
             };
 
-            axios.post('http://localhost/php-todo-list-json/backend/api/save-thing.php', data, params).then((response) => {
-                console.log(response.data);
-            });
+            axios.post('http://localhost/php-todo-list-json/backend/api/save-thing.php', data, params)
+                .then((response) => {
+                    console.log(response.data);
+                });
         }
 
     },
