@@ -2,7 +2,8 @@ const { createApp } = Vue;
 const app = createApp({
     data() {
         return {
-            title: 'Daily to do list:'
+            title: 'Daily to do list:',
+            todoList: ['Mangiare', 'Dormire', 'Studiare php & js']
         };
     }
 
