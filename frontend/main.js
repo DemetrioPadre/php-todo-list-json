@@ -29,9 +29,10 @@ const app = createApp({
                 headers: { 'Content-Type': 'multipart/form-data' },
             };
 
-            axios.post('http://localhost/php-todo-list-json/backend/api/save-thing.php', data, params)
+            axios
+                .post('http://localhost/php-todo-list-json/backend/api/save-thing.php', data, params)
                 .then((response) => {
-                    console.log(response.data);
+                    this.todoList = response.data;
                 });
         }
 
