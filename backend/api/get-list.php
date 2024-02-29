@@ -4,6 +4,10 @@
 $json_list_content = file_get_contents('../data/todolist.json');
 
 
+
+
+
+
 //questo percorso avvisa il browser che riceverà un file json
 header('Content-Type: application/json');
 

@@ -3,8 +3,19 @@ const app = createApp({
     data() {
         return {
             title: 'Daily to do list:',
-            todoList: ['Mangiare', 'Dormire', 'Studiare php & js']
+            todoList: [],
         };
+    },
+    methods: {
+        fetchTodoList() {
+            axios.get('http://localhost/php-todo-list-json/backend/api/get-list.php').then((response) => {
+                console.log(response.data);
+                this.todoList = response.data;
+            });
+        }
+    },
+    mounted() {
+        this.fetchTodoList();
     }
 
 });
