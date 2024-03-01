@@ -13,7 +13,7 @@ const app = createApp({
     },
     methods: {
         fetchTodoList() {
-            axios.get('http://localhost/php-todo-list-json/backend/api/get-list.php').then((response) => {
+            axios.get('../backend/api/get-list.php').then((response) => {
                 console.log(response.data);
                 this.todoList = response.data;
             });
@@ -32,9 +32,9 @@ const app = createApp({
                 headers: { 'Content-Type': 'multipart/form-data' },
             };
 
-            axios.post('http://localhost/php-todo-list-json/backend/api/save-thing.php', data, params)
+            axios.post('../backend/api/save-thing.php', data, params)
                 .then((response) => {
-                    this.newThingsToDo = response.data;
+                    this.todoList = response.data;
                 });
         }
 
