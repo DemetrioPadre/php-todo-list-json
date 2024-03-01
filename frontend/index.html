@@ -26,7 +26,7 @@
             <div class="card">
                 <div class="card_body">
                     <div class="input-group">
-                        <input v-model="newThingsToDo" @keyUp.enter="addThings()" type="text" class="form-control"
+                        <input v-model="newThingsToDo.name" @keyUp.enter="addThings()" type="text" class="form-control"
                             placeholder="Aggiungi qua" aria-label="Recipient's username"
                             aria-describedby="button-addon2">
                         <button @click="addThings()" class="btn btn-outline-secondary " type="button"

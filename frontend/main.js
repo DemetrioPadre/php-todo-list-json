@@ -5,7 +5,10 @@ const app = createApp({
             title: 'Daily to do list:',
             todoList: [],
 
-            newThingsToDo: '',
+            newThingsToDo: {
+                name: "",
+                done: false,
+            },
         };
     },
     methods: {
@@ -16,23 +19,22 @@ const app = createApp({
             });
         },
         addThings() {
-            const thing = this.newThingsToDo;
+            const thing = this.newThingsToDo.name;
             console.log('nuova cosa da fare:' + thing);
 
 
-            this.newThingsToDo = '';
+            this.newThingsToDo.name = '';
 
 
-            const data = { thing };
+            const data = { thing: thing };
 
             const params = {
                 headers: { 'Content-Type': 'multipart/form-data' },
             };
 
-            axios
-                .post('http://localhost/php-todo-list-json/backend/api/save-thing.php', data, params)
+            axios.post('http://localhost/php-todo-list-json/backend/api/save-thing.php', data, params)
                 .then((response) => {
-                    this.todoList = response.data;
+                    this.newThingsToDo = response.data;
                 });
         }
 
